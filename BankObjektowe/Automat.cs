@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace BankObjektowe
@@ -11,7 +12,7 @@ namespace BankObjektowe
 
         public void WrzuczMonete(kontoBankowe konto, string moneta)
         {
-            bool czyPoprawna = decimal.TryParse(moneta, out decimal wartoscMonet);
+            bool czyPoprawna = decimal.TryParse(moneta, CultureInfo.CurrentCulture, out decimal wartoscMonet);
             if (!czyPoprawna)
             {
                 Console.WriteLine($"Nieudany odrzut monety.");
@@ -25,6 +26,7 @@ namespace BankObjektowe
                 {
                     konto.Saldo += nominal;
                     _iloscMonet++;
+                    Console.WriteLine($"Przyjęto monetę: {wartoscMonet} zł.");
                 }
             }
         }
