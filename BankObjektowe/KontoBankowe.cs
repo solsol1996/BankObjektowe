@@ -18,7 +18,7 @@ namespace BankObjektowe
 
         public kontoBankowe()
         {
-            _nrKonta = "0000000000";
+            _nrKonta = NumerKonta();
             _saldo = 0;
             Console.WriteLine("Konto puste zostało utworzone.");
         }
@@ -29,8 +29,8 @@ namespace BankObjektowe
             _saldo = startoweSaldo;
             Console.WriteLine("Konto bankowe zostało utworzone.");
         }
-
-        public string NumerKonta()
+            
+        private string NumerKonta()
         {
             Random random = new Random();
             string numerKonta = "";
@@ -45,7 +45,7 @@ namespace BankObjektowe
         {
             Console.WriteLine("----------------------");
             Console.WriteLine($"Saldo: {_saldo}");
-            Console.WriteLine($"Numer konta: {NumerKonta()}");
+            Console.WriteLine($"Numer konta: {_nrKonta}");
             Console.WriteLine("----------------------");
         }
 

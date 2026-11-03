@@ -10,6 +10,7 @@ namespace BankObjektowe
         private int _iloscMonet;
         private readonly decimal[] _przejmowanyMonety = new decimal[] { 0.1m, 0.2m, 0.5m, 1m, 2m, 5m };
 
+
         public void WrzuczMonete(kontoBankowe konto, string moneta)
         {
             bool czyPoprawna = decimal.TryParse(moneta, CultureInfo.CurrentCulture, out decimal wartoscMonet);

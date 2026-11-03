@@ -7,7 +7,7 @@
 
             kontoBankowe kontoBankowe = new kontoBankowe();
             Automat automat = new Automat();
-            automat.WrzuczMonete(kontoBankowe, "0,5");
+            automat.WrzuczMonete(kontoBankowe, "0.5");
             kontoBankowe.stanKonta();
             kontoBankowe.Wplac(100);
             kontoBankowe.stanKonta();
