@@ -1,36 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
 namespace BankObjektowe
 {
     internal class Automat
     {
-        private int _iloscMonet;
-        private readonly decimal[] _przejmowanyMonety = new decimal[] { 0.1m, 0.2m, 0.5m, 1m, 2m, 5m };
-
+        private decimal[] nominaly = { 0.1m, 0.2m, 0.5m, 1.0m, 2.0m, 5.0m };
+        private int[] iloscMonet = { 0, 0, 0, 0, 0, 0 };
 
         public void WrzuczMonete(kontoBankowe konto, string moneta)
         {
-            bool czyPoprawna = decimal.TryParse(moneta, CultureInfo.CurrentCulture, out decimal wartoscMonet);
-            if (!czyPoprawna)
+            string poprawiona = moneta.Replace('.', ',');
+
+            if (!decimal.TryParse(poprawiona, out decimal wartosc))
             {
-                Console.WriteLine($"Nieudany odrzut monety.");
+                Console.WriteLine("nieudany odczyt");
                 return;
             }
-            Console.WriteLine($"Wrzucono monetę o wartości {wartoscMonet} zł.");
 
-            foreach (decimal nominal in _przejmowanyMonety)
+            bool znaleziono = false;
+
+            for (int i = 0; i < nominaly.Length; i++)
             {
-                if (wartoscMonet == nominal)
+                if (wartosc == nominaly[i])
                 {
-                    konto.Saldo += nominal;
-                    _iloscMonet++;
-                    Console.WriteLine($"Przyjęto monetę: {wartoscMonet} zł.");
+                    iloscMonet[i]++;       
+                    konto.Wplac(wartosc); 
+                    Console.WriteLine("moneta ok");
+                    znaleziono = true;
+                    break;
                 }
+            }
+
+            if (!znaleziono)
+            {
+                Console.WriteLine("zła moneta");
+            }
+        }
+
+        public void PokazMonety()
+        {
+            Console.WriteLine("monety w automacie:");
+            for (int i = 0; i < nominaly.Length; i++)
+            {
+                Console.WriteLine(nominaly[i] + " zł: " + iloscMonet[i]);
             }
         }
     }
 }
- 

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BankObjektowe
 {
@@ -8,12 +6,15 @@ namespace BankObjektowe
     {
         private decimal _saldo;
         private string _nrKonta;
-        private decimal kwota;
 
         public decimal Saldo
         {
             get { return _saldo; }
-            set { _saldo = value; }
+        }
+
+        public string NrKonta
+        {
+            get { return _nrKonta; }
         }
 
         public kontoBankowe()
@@ -23,13 +24,6 @@ namespace BankObjektowe
             Console.WriteLine("Konto puste zostało utworzone.");
         }
 
-        public kontoBankowe( string nrKonta, decimal startoweSaldo)
-        {
-            _nrKonta = nrKonta;
-            _saldo = startoweSaldo;
-            Console.WriteLine("Konto bankowe zostało utworzone.");
-        }
-            
         private string NumerKonta()
         {
             Random random = new Random();
@@ -43,10 +37,8 @@ namespace BankObjektowe
 
         public void stanKonta()
         {
-            Console.WriteLine("----------------------");
-            Console.WriteLine($"Saldo: {_saldo}");
-            Console.WriteLine($"Numer konta: {_nrKonta}");
-            Console.WriteLine("----------------------");
+            Console.WriteLine("Saldo: " + _saldo);
+            Console.WriteLine("Numer: " + _nrKonta);
         }
 
         public void Wplac(decimal kwota)
@@ -54,11 +46,6 @@ namespace BankObjektowe
             if (kwota > 0)
             {
                 _saldo += kwota;
-                Console.WriteLine($"Wpłacono {kwota} zł na konto.");
-            }
-            else
-            {
-                Console.WriteLine("X");
             }
         }
     }
