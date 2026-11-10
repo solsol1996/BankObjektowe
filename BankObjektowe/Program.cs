@@ -19,7 +19,6 @@ namespace BankObjektowe
             Console.WriteLine("\nStan pierwszego konta:");
             k1.stanKonta();
 
-            Console.WriteLine("\nZawartost automatu:");
             auto.PokazMonety();
 
             Console.WriteLine("\nTworzenie drugiego konta:");

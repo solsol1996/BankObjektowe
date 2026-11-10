@@ -4,7 +4,7 @@ namespace BankObjektowe
 {
     internal class Automat
     {
-        private decimal[] nominaly = { 0.1m, 0.2m, 0.5m, 1.0m, 2.0m, 5.0m };
+        private decimal[] nominaly = { 0.1m, 0.2m, 0.5m, 1, 2, 5 };
         private int[] iloscMonet = { 0, 0, 0, 0, 0, 0 };
 
         public void WrzuczMonete(kontoBankowe konto, string moneta)
@@ -16,7 +16,7 @@ namespace BankObjektowe
                 Console.WriteLine("nieudany odczyt");
                 return;
             }
-
+              
             bool znaleziono = false;
 
             for (int i = 0; i < nominaly.Length; i++)
@@ -25,7 +25,7 @@ namespace BankObjektowe
                 {
                     iloscMonet[i]++;       
                     konto.Wplac(wartosc); 
-                    Console.WriteLine("moneta ok");
+                    Console.WriteLine("moneta dobra");
                     znaleziono = true;
                     break;
                 }
@@ -39,7 +39,7 @@ namespace BankObjektowe
 
         public void PokazMonety()
         {
-            Console.WriteLine("monety w automacie:");
+            Console.WriteLine("Monety w automacie:");
             for (int i = 0; i < nominaly.Length; i++)
             {
                 Console.WriteLine(nominaly[i] + " zł: " + iloscMonet[i]);
