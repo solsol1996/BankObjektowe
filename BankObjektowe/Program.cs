@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace BankObjektowe
 {
@@ -6,24 +7,19 @@ namespace BankObjektowe
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Tworzenie konta i wrzucanie monet:");
+
             kontoBankowe k1 = new kontoBankowe();
-            Automat auto = new Automat();
+            Automat automat = new Automat();
 
-            auto.WrzuczMonete(k1, "0.5");
-            auto.WrzuczMonete(k1, "2");
-            auto.WrzuczMonete(k1, "3");   
-            auto.WrzuczMonete(k1, "abc"); 
-            auto.WrzuczMonete(k1, "5");
+            automat.WrzucMonety(k1,"5 2 0.5 abc 3 5 7 2 2 2 1");
 
-            Console.WriteLine("\nStan pierwszego konta:");
             k1.stanKonta();
 
-            auto.PokazMonety();
+            k1.Wyplac(20);
 
-            Console.WriteLine("\nTworzenie drugiego konta:");
-            kontoBankowe k2 = new kontoBankowe();
-            k2.stanKonta();
+            k1.PokazHistorie();
+
+            automat.PokazMonety();
         }
     }
 }
